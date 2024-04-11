@@ -22,31 +22,10 @@
       style="border: 2px solid black">
     </iframe>
 
-    <script>
+    <input type="text" id="notification" placeholder="Enter Notification" />
+    <button id="btn-send-notification">Send notification</button>
 
-   function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else { 
-        document.getElementById("geoLocation").innerHTML = "Geolocation is not supported by this browser.";
-    }
-}
-
-function showPosition(position) {
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
-
-    document.getElementById("geoLocation").innerHTML = "Latitude: " + position.coords.latitude + 
-    "<br>Longitude: " + position.coords.longitude; 
     
-    var map = document.getElementById("map");
-    map.src = `https://www.openstreetmap.org/export/embed.html?bbox=${longitude},${latitude}&marker=${latitude},${longitude}`;
-}
-    </script>
-
-
-
-
     
     <script>
       if ("serviceWorker" in navigator) {
