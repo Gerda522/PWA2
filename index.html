@@ -11,6 +11,42 @@
   </head>
   <body>
     <h1>Hello, PWA!</h1>
+
+    <button onclick="getLocation()">Get geolocation</button>
+    <p id="geoLocation"></p>
+    <iframe
+      id="map"
+      width="100%"
+      height="300"
+      src="https://www.openstreetmap.org/export/embed.html?bbox=6.020507812500001%2C53.30462107510271%2C17.248535156250004%2C58.967003820180736&amp;layer=mapnik"
+      style="border: 2px solid black">
+    </iframe>
+
+    <script>
+
+   function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        document.getElementById("geoLocation").innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+
+    document.getElementById("geoLocation").innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude; 
+    
+    var map = document.getElementById("map");
+    map.src = `https://www.openstreetmap.org/export/embed.html?bbox=${longitude},${latitude}&marker=${latitude},${longitude}`;
+}
+    </script>
+
+
+
+
     
     <script>
       if ("serviceWorker" in navigator) {
